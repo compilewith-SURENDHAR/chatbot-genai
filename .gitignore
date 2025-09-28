@@ -1,0 +1,13 @@
+# Environment files
+*.env
+
+# Virtual environment
+genaiv/
+
+# FAISS vector storage
+vector_storage/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
