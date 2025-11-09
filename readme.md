@@ -1,54 +1,50 @@
 pdfReaderProject/
-│── app.py                      # Flask entry point (create & run app)
-│── config.py                   # Configs (API keys, DB URI, etc.)
-│── requirements.txt
-│── .env                        # Secrets (Mongo URI, API key)
-│── README.md
+│── app.py                      # Flask entry point (create & run app) <br>
+│── config.py                   # Configs (API keys, DB URI, etc.) <br>
+│── requirements.txt <br>
+│── .env                        # Secrets (Mongo URI, API key) <br>
+│── README.md <br>
+<br>
+├── backend/                     # Core backend logic <br>
+│   ├── __init__.py <br>
+│   ├── routes/                  # Flask route handlers <br>
+│   │   ├── __init__.py <br>
+│   │   ├── chat_routes.py       # Ask anything / chatbot endpoints <br>
+│   │   ├── db_routes.py         # Database query endpoints <br>
+│   │   └── extract_routes.py    # Text extraction endpoints <br>
+│   │ <br>
+│   ├── services/                # Business logic layer <br>
+│   │   ├── __init__.py <br>
+ |   |   ├── RAG/ <br>
+|   |   |   ├──__init__.py <br>
+|   |   |   ├──files_services.py <br>
+|   |   |   └──vector_embeddings/py <br>
+│   │   ├── chatbot_service.py   # Handles embeddings + LLM context <br>
+│   │   ├── db_service.py        # Mongo/Postgres queries <br>
+│   │   └── extract_service.py   # File parsing, text extraction <br>
+│   │ <br>
+│   ├── utils/                   # Helper functions <br>
+│   │   ├── __init__.py <br>
+│   │   ├── embedding_utils.py   # Vector DB, similarity search <br>
+│   │   ├── file_utils.py        # Upload, save, delete <br>
+│   │   └── text_utils.py        # Cleaning, formatting text <br>
+│   │ <br>
+│   └── models/                  # For ORM or schema definitions <br>
+│       ├── __init__.py <br>
+│       ├── mongo_models.py      # MongoDB collections (if used) <br>
+│       └── sql_models.py        # SQLAlchemy models (if used) <br>
+<br>
+├── vector_store/                # Persistent storage for embeddings <br>
+│   └── index/                   # FAISS / Chroma DB files <br>
+ <br>
+├── uploads/                     # User-uploaded files <br>
+│   ├── pdfs/ <br>
+│   ├── docs/ <br>
+│   └── txt/ <br>
+ <br>
+├── frontend/                    # Optional (if you add UI later) <br>
+│   ├── static/                  # CSS, JS <br>
+│   ├── templates/               # HTML (if Flask Jinja2) <br>
+│   └── react-app/               # (if you choose React instead) <br>
 
-├── backend/                     # Core backend logic
-│   ├── __init__.py
-│   ├── routes/                  # Flask route handlers
-│   │   ├── __init__.py
-│   │   ├── chat_routes.py       # Ask anything / chatbot endpoints
-│   │   ├── db_routes.py         # Database query endpoints
-│   │   └── extract_routes.py    # Text extraction endpoints
-│   │
-│   ├── services/                # Business logic layer
-│   │   ├── __init__.py
-|   |   ├── RAG/
-|   |   |   ├──__init__.py
-|   |   |   ├──files_services.py
-|   |   |   └──vector_embeddings/py
-│   │   ├── chatbot_service.py   # Handles embeddings + LLM context
-│   │   ├── db_service.py        # Mongo/Postgres queries
-│   │   └── extract_service.py   # File parsing, text extraction
-│   │
-│   ├── utils/                   # Helper functions
-│   │   ├── __init__.py
-│   │   ├── embedding_utils.py   # Vector DB, similarity search
-│   │   ├── file_utils.py        # Upload, save, delete
-│   │   └── text_utils.py        # Cleaning, formatting text
-│   │
-│   └── models/                  # For ORM or schema definitions
-│       ├── __init__.py
-│       ├── mongo_models.py      # MongoDB collections (if used)
-│       └── sql_models.py        # SQLAlchemy models (if used)
 
-├── vector_store/                # Persistent storage for embeddings
-│   └── index/                   # FAISS / Chroma DB files
-
-├── uploads/                     # User-uploaded files
-│   ├── pdfs/
-│   ├── docs/
-│   └── txt/
-
-├── frontend/                    # Optional (if you add UI later)
-│   ├── static/                  # CSS, JS
-│   ├── templates/               # HTML (if Flask Jinja2)
-│   └── react-app/               # (if you choose React instead)
-
-└── tests/                       # Unit & integration tests
-    ├── __init__.py
-    ├── test_chatbot.py
-    ├── test_db.py
-    └── test_extract.py
